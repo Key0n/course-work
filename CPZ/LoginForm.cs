@@ -60,11 +60,6 @@ namespace CPZ
                             this.DialogResult = DialogResult.Yes;
                             this.Close();
                             break;
-
-                        case LoginType.RemoveAll:
-                            this.DialogResult = DialogResult.Yes;
-                            this.Close();
-                            break;
                     }
 
                     txtPassword.Text = string.Empty;

@@ -81,6 +81,7 @@ namespace CPZ
                     }
 
                     LoadAccounts();
+                    Program.SaveSettings();
                 }
             }
         }
