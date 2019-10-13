@@ -33,7 +33,7 @@ namespace CPZ
 
             DeserializeAccounts();
             Key = key;
-            this.Text = string.Format("[{0} accounts]", Accounts.Count);
+            this.Text = string.Format("[{0} аккаунтов]", Accounts.Count);
         }
 
         private void Search()
@@ -95,10 +95,8 @@ namespace CPZ
                 return true;
             }
 
-            string title = "Delete account?";
-
             IsDialogOpen = true;
-            DialogResult dr = MessageBox.Show("Вы уверены что хотите сделать это?", title, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Вы уверены что хотите сделать это?", "Удалить аккаунт?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             IsDialogOpen = false;
 
             if (dr == DialogResult.Yes)
