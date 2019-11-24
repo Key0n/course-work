@@ -8,7 +8,7 @@ namespace CPZ
 {
     internal class Encryption
     {
-        const string _salt = "e3080105715443ef14ef2a09be11fa9d";
+        const string _salt = "e3080105715233ef58ef2a09be11fa9d";
 
         internal static string GenerateRandomPassword(int length)
         {

@@ -5,7 +5,7 @@ namespace CPZ
 {
     public partial class NewForm : Form
     {
-        Encryption _cryLain = new Encryption();
+        Encryption encrypt = new Encryption();
 
         NewType _type;
         string _name;
@@ -21,24 +21,24 @@ namespace CPZ
             switch (_type)
             {
                 case NewType.Modify:
-                    btnOk.Text = "Save";
+                    btnOk.Text = "Сохранить";
                     if (!string.IsNullOrEmpty(info))
                     {
-                        this.Text = string.Format("Edit account - {0}", info);
+                        this.Text = string.Format("Изменить аккаунт - {0}", info);
                     }
                     else
                     {
-                        this.Text = "Add new account...";
+                        this.Text = "Добавить новый аккаунт...";
                     }
                     
-                    int i = MainForm.Accounts.FindIndex(x => x.Name() == _cryLain.Encrypt(Encryption.ToInsecureString(MainForm.Key), _name));
+                    int i = MainForm.Accounts.FindIndex(x => x.Name() == encrypt.Encrypt(Encryption.ToInsecureString(MainForm.Key), _name));
                     
                     if (i > -1)
                     {
-                        txtName.Text = _cryLain.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Name());
-                        txtMail.Text = _cryLain.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Email());
-                        txtPassword.Text = _cryLain.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Password());
-                        txtNote.Text = _cryLain.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Note());
+                        txtName.Text = encrypt.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Name());
+                        txtMail.Text = encrypt.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Email());
+                        txtPassword.Text = encrypt.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Password());
+                        txtNote.Text = encrypt.Decrypt(Encryption.ToInsecureString(MainForm.Key), MainForm.Accounts[i].Note());
                     }
 
                     break;
@@ -52,12 +52,12 @@ namespace CPZ
                 switch (_type)
                 {
                     case NewType.Modify:
-                        int i = MainForm.Accounts.FindIndex(x => x.Name() == _cryLain.Encrypt(Encryption.ToInsecureString(MainForm.Key), _name));
+                        int i = MainForm.Accounts.FindIndex(x => x.Name() == encrypt.Encrypt(Encryption.ToInsecureString(MainForm.Key), _name));
                         if (i > -1) { MainForm.Accounts.RemoveAt(i); }
                         break;
                 }
 
-                Account account = new Account(_cryLain.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtName.Text), _cryLain.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtMail.Text), _cryLain.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtPassword.Text), _cryLain.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtNote.Text));
+                Account account = new Account(encrypt.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtName.Text), encrypt.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtMail.Text), encrypt.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtPassword.Text), encrypt.Encrypt(Encryption.ToInsecureString(MainForm.Key), txtNote.Text));
                 MainForm.Accounts.Add(account);
 
                 txtName.Text = string.Empty;

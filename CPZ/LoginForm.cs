@@ -68,7 +68,7 @@ namespace CPZ
                 }
                 else
                 {
-                    MessageBox.Show("The password you provided is incorrect!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Неверный пароль!", "ОШИБКА", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
